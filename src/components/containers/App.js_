@@ -1,0 +1,31 @@
+import React, { Component } from "react";
+//import { Router, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { connect } from "react-redux";
+import CreateCusomterModal from "./Cusomer/CreateCustomerModal/CreateCusomterModal";
+//import { history } from "../../helpers";
+
+class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <Layout>
+          {/* <Router history={history}> */}
+          <Switch>
+            <PrivateRoute exact path="/" component={HomePage} />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/register" component={RegisterPage} />
+            <Route path="/customer-list" component={CustomerListPage} />
+            <Route path="/customerDetails/:id" component={customerDetails} />
+            <Route path="/customerCreate" component={CreateCusomterModal} />
+            <Route path="/customerUpdate/:id" component={UpdateCustomerModal} />
+            <Route path="/customerDelete/:id" component={DeleteCustomerModal} />
+            <Redirect from="*" to="/" />
+          </Switch>
+        </Layout>
+      </BrowserRouter>
+    );
+  }
+}
+
+export default App;
